@@ -1,0 +1,28 @@
+{
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "functions": {
+    "source": "functions"
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "agrilink-app-c137b",
+          "appId": "1:16032161551:android:845970be65907a8a81287a",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "agrilink-app-c137b",
+          "configurations": {
+            "android": "1:16032161551:android:845970be65907a8a81287a",
+            "web": "1:16032161551:web:7b39b770cb036bd581287a"
+          }
+        }
+      }
+    }
+  }
+}

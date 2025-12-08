@@ -1,0 +1,19 @@
+{
+  "name": "agrilink-functions",
+  "description": "Cloud Functions for sending FCM notifications for AgriLink",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'No build step for JS'",
+    "lint": "echo 'No lint step configured'",
+    "deploy": "firebase deploy --only functions"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^5.1.1"
+  }
+}

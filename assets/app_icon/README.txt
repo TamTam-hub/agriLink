@@ -1,0 +1,1 @@
+Place the AgriLink logo image file here named 'agri_link.png'. Recommended size 1024x1024 PNG with transparent background. This will be used by flutter_launcher_icons to generate Android launcher icons.

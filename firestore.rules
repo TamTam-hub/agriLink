@@ -1,0 +1,42 @@
+// Firestore security rules for AgriLink app
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // User documents
+    // DEV MODE: Using Supabase Auth, Firebase request.auth is null.
+    // Temporarily relax rules to unblock development. Replace with proper
+    // Firebase Custom Tokens or migrate to Supabase DB for production.
+    match /users/{userId} {
+      allow read, write: if true;
+    }
+
+    // Product documents: allow read to everyone, write only to authenticated farmers
+    match /products/{productId} {
+      // DEV MODE: allow all reads/writes; tighten before production.
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Order documents
+    // DEV MODE: open access to unblock Supabase-auth-only client (Firebase request.auth is null)
+    // Production recommendation:
+    // match /orders/{orderId} {
+    //   allow create: if request.auth != null && request.auth.uid == request.resource.data.buyerId;
+    //   allow read: if request.auth != null && (request.auth.uid == resource.data.buyerId || request.auth.uid == resource.data.farmerId);
+    //   allow update: if request.auth != null && request.auth.uid == resource.data.farmerId; // status progression
+    //   allow delete: if false; // no deletes
+    // }
+    match /orders/{orderId} {
+      allow read, write: if true;
+    }
+
+    // Device tokens (for FCM)
+    // DEV MODE: open to allow client to save tokens while using Supabase Auth
+    // Tighten before production (restrict to owner uid once Firebase Auth or Custom Tokens are used)
+    match /deviceTokens/{uid} {
+      allow read, write: if true;
+    }
+  }
+}
